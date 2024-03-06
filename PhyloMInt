@@ -145,7 +145,8 @@ def directoryALL(dirr_path, outdir, outfile, save_dics, threads):
             json.dump(SeedSetDic_serializable, out_file)
         with open(f'{outdir}/nonSeedSetDic.json', 'w') as out_file:
             json.dump(nonSeedSetDic, out_file)
-
+        with open(f'{outdir}/confidenceDic.json', 'w') as out_file:
+            json.dump(ConfidenceDic, out_file)
 
 def process_sbml(sbml_path):
 

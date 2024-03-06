@@ -31,7 +31,7 @@ def getSeedSet(DG, maxComponentSize = 5):
     '''
     Usage: takes input networkX directed graph
     Returns: SeedSet dictionary{seedset:confidence score}
-    Implementation follows literature description, 
+    Implementation follows literature description,
     Improves upon NetCooperate module implementation which erroneously discards certian cases of SCCs (where a smaller potential SCC lies within a larger SCC)
     '''
 
@@ -51,7 +51,7 @@ def getSeedSet(DG, maxComponentSize = 5):
         # check single element SCC
         elif len(cc_temp) == 1:
             if DG.in_degree(cc_temp[0]) == 0:
-                SeedSetConfidence[cc_temp[0]] = 1.0    
+                SeedSetConfidence[cc_temp[0]] = 1.0
 
         # check 2 to max threshold SCC
         else:
@@ -63,10 +63,10 @@ def getSeedSet(DG, maxComponentSize = 5):
                     if edge[0] not in cc_temp:
                         cc_temp = []
             for node in cc_temp:
-                SeedSetConfidence[node] = 1/len(cc_temp) 
-    
+                SeedSetConfidence[node] = 1/len(cc_temp)
+
     SeedSet = SeedSetConfidence.keys()
 
     nonSeedSet = list(set(DG.nodes()) - set(SeedSet))
 
-    return(SeedSetConfidence, SeedSet, nonSeedSet)    
+    return(SeedSetConfidence, SeedSet, nonSeedSet)
